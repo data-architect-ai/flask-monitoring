@@ -11,14 +11,14 @@ pipeline {
         
         stage('Integrate Remote kubernetess with Jenkins') {
             steps {
-                withCredentials([string(credentialsId: 'SECRET_TOKEN', variable: 'KUBE_TOKEN')]) {
+
                     sh '''
 
                     ./kubectl get nodes
                     ./kubectl apply -f service.yaml
                     ./kubectl apply -f deployment.yaml
                     '''
-                }
+                
             }
         }
     }
